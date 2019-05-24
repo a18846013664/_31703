@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+       Copyright 2009-2016 the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vo.one">
+    <insert id="addNewsOne" parameterType="com.vo.News">
+        insert into news(newsname,newsin,date,file)values (
+        #{newsname},#{newsin},#{date},#{file}
+        )
+    </insert>
+    <insert id="insertNewOrder">
+        insert into orderhistory(id,username,file,sex,age,phone,card,rnumber,date)values (
+        #{id},#{username},#{file},#{sex},#{age},#{phone},#{card},#{rnumber},#{date}
+        )
+    </insert>
+    <insert id="addNewsTwo" parameterType="com.vo.News">
+        insert into news(newsname,newsin,date,file)values (
+        #{newsname},#{newsin},#{date},#{file}
+        )
+    </insert>
+    <select id="newsCount" resultType="int">
+        select count(1) from news
+    </select>
+    <delete id="deleteOne" parameterType="int">
+        delete  from news where id = #{id}
+    </delete>
+    <select id="pageNews" parameterType="com.vo.NewsTool"  resultType="com.vo.News">
+        SELECT * from news LIMIT #{start},#{number}
+    </select>
+    <select id="oneNews" parameterType="int"  resultType="com.vo.News">
+        SELECT * from news where id=#{id}
+    </select>
+    <select id="allOrderHistory" resultType="com.vo.OrderHistory">
+        select * from orderhistory
+    </select>
+    <insert id="addtalk" parameterType="com.vo.Talk">
+        insert into talk(id,username,text,data,file)values(
+          #{id},#{username},#{text},#{data},#{file}
+        )
+    </insert>
+    <insert id="addtalkmanage" parameterType="com.vo.Talk">
+        insert into talkmanage(id,username,text,data,file)values(
+          #{id},#{username},#{text},#{data},#{file}
+        )
+    </insert>
+    <select id="Alltalk" resultType="com.vo.Talk">
+        select * from talk ORDER BY id DESC
+    </select>
+    <select id="AlltalkManage" resultType="com.vo.Talk">
+        select * from talkmanage ORDER BY id DESC
+    </select>
+    <delete id="deletetalkmanage" parameterType="int">
+        delete from talkmanage where tid = #{tid}
+    </delete>
+    <select id="onetalkmanage" parameterType="int" resultType="com.vo.Talk">
+        select * from talkmanage where tid = #{tid}
+    </select>
+    <select id="onetalk" parameterType="int" resultType="com.vo.Talk">
+        select * from talk where tid = #{tid}
+    </select>
+    <update id="updateflag">
+        update talk set flag = 1
+        where id = #{id}
+    </update>
+    <insert id="addAnswer" parameterType="com.vo.Answer">
+        insert into answer(id,text,data)values(
+          #{id},#{text},#{data}
+        )
+    </insert>
+    <select id="allanswer" parameterType="int" resultType="com.vo.Answer">
+        select * from answer where id = #{id}
+    </select>
+    <select id="oneOrders" parameterType="int" resultType="com.vo.OrderHistory">
+        select * from orderhistory where id = #{id}
+    </select>
+    <select id="mhppRoom" parameterType="String" resultType="com.vo.Room">
+        select * from room where rintro like CONCAT('%',#{mhcx},'%')
+    </select>
+    <select id="free" resultType="com.vo.Room">
+        select * from room where rnow = 0
+    </select>
+    <delete id="deletereset" parameterType="int">
+        delete from roomin where id = #{id}
+    </delete>
+    <select id="historyName" parameterType="String" resultType="com.vo.OrderHistory">
+        select * from orderhistory where username like CONCAT('%',#{mhcx},'%')
+    </select>
+    <select id="selectOutdate" parameterType="String" resultType="com.vo.Roomin">
+        select * from roomin where outdate like CONCAT('%',#{mhcx},'%')
+    </select>
+</mapper>

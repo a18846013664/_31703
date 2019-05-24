@@ -1,0 +1,155 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        .body{
+            height: 220px;
+            width: 1330px;
+            margin: 0 auto;
+            background: url("../../uploaddir/31702.jpeg");
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+        }
+        .head{
+            background:black;
+            height: 40px;
+            width: 1330px;
+            margin: 0 auto;
+        }
+        .dao{
+            background: black;
+            height: 300px;
+            width: 400px;
+            margin: 0px 10px;
+            border: 1px solid white;
+        }
+        .bottom{
+            width: 1330px;
+            height: 35px;
+            background: black;
+            margin: auto;
+        }
+        .imga{
+            position: absolute;
+            left: 412px;
+            top: 295px;
+            border: 1px solid white;
+            background: black;
+            height: 145px;
+            width: 480px;
+        }
+        .imgb{
+            position: absolute;
+            left: 412px;
+            top: 445px;
+            border: 1px solid white;
+            background: black;
+            height: 150px;
+            width: 480px;
+        }
+        .imgc{
+            position: absolute;
+            left: 894px;
+            top: 295px;
+            border: 1px solid white;
+            background: black;
+            height: 300px;
+            width: 446px;
+        }
+        .footer{
+            height: 150px;
+            width: 1330px;
+            background: black;
+            margin: 0 auto;
+        }
+        a:hover{
+            color: powderblue;
+            cursor: pointer;
+        }
+        a{
+            text-decoration: white;
+            font-family: Calibri;
+            color: white;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body style="background: gray" onload="f()">
+<div class="head">
+    <div style="width: 250px;height: 26px;border-radius: 25px;background: white;position: absolute;top: 5px;left: 550px">
+        <center>
+            <font style="color: red;font-weight: bolder;font-size: 18px">@&nbsp;艾&nbsp;特&nbsp;国&nbsp;际&nbsp;酒&nbsp;店</font>
+        </center>
+    </div>
+    <div id="qa" href="#" style="display:none;position: absolute;left: 1220px;top: 15px"><a href="/view/jsp/user/main.jsp">${jsp.username}</a></div>
+    <a id="qb" href="/view/jsp/load.jsp" style="position: absolute;left: 1240px;top: 15px">
+        登陆
+    </a>
+    <a id="qc" href="/view/jsp/register.jsp" style="position: absolute;left: 1280px;top: 15px">
+        注册
+    </a>
+</div>
+<div class="body"></div>
+<div class="bottom">
+    <table align="center" width="800" style="position: relative;top: 5px;left: 280px">
+        <tr>
+            <td><a>网&nbsp;站&nbsp;首&nbsp;页</a></td>
+            <td><a href="/view/jsp/user/introduce.html">酒&nbsp;店&nbsp;介&nbsp;绍</a></td>
+            <td><a href="/view/jsp/user/SS.jsp">客&nbsp;房&nbsp;设&nbsp;施</a></td>
+            <td><a href="/view/jsp/user/service.jsp">服&nbsp;务&nbsp;项&nbsp;目</a></td>
+            <td><a href="/a/myorder">预&nbsp;定&nbsp;列&nbsp;表</a></td>
+            <td><a href="/a/order">我&nbsp;要&nbsp;预&nbsp;定</a></td>
+        </tr>
+    </table>
+</div>
+<div class="dao">
+    <div style="height: 280px;width:380px;background: #262626;border-radius: 25px;position: relative;top: 10px;left: 10px ">
+        <div style="font-weight: bolder;font-size: 18px;margin: 0px 50px 30px 50px;color: white">酒店最新消息：</div>
+        <c:forEach items="${news}" var="newss">
+            <div><a href="/a/showNews?id=${newss.id}" style="margin: 10px 50px;font-size: 25px;font-weight: bolder">${newss.newsname}</a></div>
+        </c:forEach>
+    </div>
+</div>
+<div>
+    <div class="imga">
+        <img src="../../uploaddir/31703.jpg" width="480px" height="145px" alt="豪华单人房">
+    </div>
+    <div class="imgb">
+        <img src="../../uploaddir/31704.jpg" width="480px" height="150px" alt="温馨情侣房">
+    </div>
+    <div class="imgc">
+        <img src="../../uploaddir/31705.jpg" width="446px" height="300px" alt="复古双人房">
+    </div>
+</div>
+<div class="footer">
+    <a href="#" style="float: left;margin: 30px 0px 0px 30px;color: white">友情链接：棚户区改造&nbsp;黑龙江宣传片拍摄&nbsp;桥梁设计</a>
+    <div style="color: white">
+        <font style="font-size:13px;float: left;margin: 100px 0px 0px 150px;">Copyright@淘乐乐购物车平台CNZZTD</font>
+        <font style="font-size: 13px;float: left;margin: 120px 0px 0px -220px">客服电话：18846013664&nbsp;&nbsp;&nbsp;&nbsp;版权所有</font>
+    </div>
+</div>
+<script type="text/javascript">
+    function f() {
+
+        var qq = document.getElementById("qa").innerText;
+        var qb = document.getElementById("qb");
+        var qc = document.getElementById("qc");
+        if (document.getElementById("qa").innerText!=""){
+            document.getElementById("qa").style.display="block";
+            document.getElementById("qb").style.display="none";
+            document.getElementById("qc").style.display="none";
+        }
+    }
+</script>
+
+
+</body>
+</html>

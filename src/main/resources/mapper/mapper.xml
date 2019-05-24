@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+       Copyright 2009-2016 the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vo.mapper">
+    <insert id="addNewUser" useGeneratedKeys="true">
+        insert into user(username,password,file,sex,age,phone,card)values (
+        #{username},#{password},#{file},#{sex},#{age},#{phone},#{card}
+        )
+    </insert>
+    <select id="selectByName" parameterType="String" resultType="com.vo.User">
+        select id,username,password,file,sex,phone,card,age from user
+        where username = #{username}
+    </select>
+    <update id="updatefile" parameterType="com.vo.User">
+        update user set file=#{file}
+        where id = #{id}
+    </update>
+    <select id="selectById" parameterType="int" resultType="com.vo.User">
+        select id,username,password,file,sex,phone,card,age from user
+        where id = #{id}
+    </select>
+    <select id="selectRoom" parameterType="int" resultType="com.vo.Room">
+        select id,rnumber,rvarious,rprice,rintro,rfiles,rnow from room where rnumber = #{rnumber}
+    </select>
+    <select id="selectManage" parameterType="String" resultType="com.vo.Manage">
+        select username,password from manage
+        where username = #{username}
+    </select>
+    <insert id="addRoom">
+        insert into room(id,rnumber,rvarious,rprice,rintro,rfiles)values (
+        #{id},#{rnumber},#{rvarious},#{rprice},#{rintro},#{rfiles}
+        )
+    </insert>
+    <insert id="addroomin">
+        insert into roomin(id,username,password,file,sex,age,phone,card,rnumber,date,outdate)values (
+        #{id},#{username},#{password},#{file},#{sex},#{age},#{phone},#{card},#{rnumber},#{date},#{outdate}
+        )
+    </insert>
+    <select id="selectRoomin" parameterType="int" resultType="com.vo.Roomin">
+        select id,username,password,file,sex,age,phone,card,rnumber,date,outdate from roomin where id=#{id}
+    </select>
+    <insert id="addRoomSrc">
+        insert into roomsrc(id,roomfiles)values (
+        #{id},#{roomfiles}
+        )
+    </insert>
+    <select id="AllRoom" resultType="com.vo.Room">
+        select id,rnumber,rvarious,rprice,rintro,rfiles,rnow from room
+   </select>
+    <select id="AllRoomin" resultType="com.vo.Roomin">
+        select id,username,password,sex,age,file,phone,card,rnumber,date from roomin
+   </select>
+   <select id="OneRoom" parameterType="String" resultType="com.vo.Room">
+        select id,rnumber,rvarious,rprice,rintro,rfiles,rnow from room
+        where id = #{id}
+   </select>
+    <update id="upUser" parameterType="com.vo.User">
+        update user set password = #{password},sex=#{sex},age=#{age},phone=#{phone}
+        where id = #{id}
+    </update>
+   <select id="OneRoomSrc" parameterType="String" resultType="com.vo.RoomSrc">
+       select id,roomfiles from roomsrc where id = #{id}
+   </select>
+    <update id="updateRoomNow" parameterType="com.vo.Room">
+        update room set rnow=#{rnow}
+        where id = #{id}
+    </update>
+    <select id="selectMyOrder" parameterType="int" resultType="com.vo.Roomin">
+        select * from roomin where id = #{id}
+    </select>
+    <update id="updateAccount" parameterType="com.vo.User">
+        update users set account = account + #{account} where id=#{id}
+    </update>
+    <update id="upUserfile" parameterType="com.vo.User">
+        update users set username = #{username},sex=#{sex},phone=#{phone},headfile=#{headfile}
+        where id = #{id}
+    </update>
+
+
+    <delete id="deleteFile" parameterType="int">
+        delete  from users where id = #{id}
+    </delete>
+    <update id="updatePass" parameterType="com.vo.User">
+         update users set password = #{password} where id = #{id}
+    </update>
+</mapper>

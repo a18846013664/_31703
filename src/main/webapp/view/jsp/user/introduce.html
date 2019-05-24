@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .head{
+            width: 1330px;
+            height:70px;
+            background:white;
+        }
+        .title{
+            position: absolute;
+            top:20px;
+            left: 235px;
+        }
+        .en{
+            position: absolute;
+            top: 15px;
+            left: 130px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: lightseagreen;
+        }
+        .span{
+            font-size: 32px;
+            font-weight: bolder;
+            color: gray;
+        }
+        .s{
+            color:rgb(87, 112, 141);
+        }
+        .so{
+            color:rgb(102, 107, 87);
+        }
+        p{
+            font-size:12px;font-weight:400;
+            position: absolute;
+            top: 20px;
+            color: gray;
+        }
+        .img{
+            width:900px;
+            height: 70px;
+            background: url("../../../uploaddir/15.gif");
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+            position: absolute;
+            top:10px;
+            left: 430px;
+        }
+        .sou{
+            width: 1330px;
+            height: 20px;
+            background: rgb(129, 129, 129);
+        }
+        .div{
+            width: 1330px;
+            height: 300px;
+            background: white;
+        }
+        .div2{
+            width: 1020px;
+            height:650px;
+            position: absolute;
+            left: 9px;
+            background: #eeeeee;
+        }
+        .div3{
+            width: 160px;
+            height: 650px;
+            background: white;
+            position: absolute;
+            top: 650px;
+            left: 1170px;
+
+        }
+        .indiv1{
+            position: absolute;
+            top:15px;
+            left: 33px;
+            border:3px solid gray;
+            width: 950px;
+            height: 600px;
+        }
+        .left{
+            color: lightgray;
+            font-size: 25px;
+            font-weight: bolder;
+            position: absolute;
+            top: 250px;
+        }
+        .right{
+            color: lightgray;
+            font-size: 25px;
+            font-weight: bolder;
+            position: absolute;
+            top: 415px;
+            left: 992px;
+        }
+        .sl{
+            position: absolute;
+            top: 14px;
+        }
+        a:hover{
+            color:gray;
+            cursor: pointer;
+        }
+        .left:hover{
+            color: aqua;
+            cursor: pointer;
+        }
+        .le{
+            width:80px;height:60px;
+        }
+        .ri{
+            width:32px;
+            height:60px;
+            position:absolute;
+            top: -145px;
+            left:-5px;
+        }
+        p{
+            font-size: 18px;
+        }
+    </style>
+    <link rel="stylesheet" href="mm.css">
+</head>
+<body onload="on()">
+<div class="head">
+    <div style="border-top:1px solid gray;width:275px;position:relative;top:10px;left:120px;"></div>
+    <div>
+        <div class="en">
+            <span class="s">S</span><span class="so">urpass</span>
+            <p >综合性五星级酒店</p>
+        </div>
+    </div>
+    <div class="title"><span class="span">@艾特国际</span></div>
+    <div style="border-top:1px solid gray;width:275px;position:relative;top:-55px;left:120px;"></div>
+    <div class="img">
+    </div>
+</div>
+<div class="sou">
+</div>
+<div class="div">
+    <div class="div2">
+        <div class="left">
+            <div class="le" ><a class="sl" onclick="plusSlides(-1)">《</a></div>
+        </div>
+        <div class="indiv1">
+            <img src="../../../uploaddir/31701.jpg" width="950px" height="600px">
+        </div>
+        <div class="right">
+            <div class="ri" ><a onclick="plusSlides(1)" class="sl">&nbsp;》</a></div>
+        </div>
+    </div>
+    <div class="div2" style="display:none">
+        <div class="left">
+            <div class="le"><a onclick="plusSlides(-1)" class="sl">《</span></a></div>
+        </div>
+        <div class="indiv1" style="position:absolute;top:18px">
+            <img src="../../../uploaddir/31702.jpeg" width="950px" height="600px">
+        </div>
+        <div class="right">
+            <div class="ri" ><a class="sl" onclick="plusSlides(1)">&nbsp;》</a></div>
+        </div>
+    </div>
+    <div class="div2" style="display:none">
+        <div class="left">
+            <div class="le"><a class="sl" onclick="plusSlides(-1)">《</a></div>
+        </div>
+        <div class="indiv1">
+            <img src="../../../uploaddir/31703.jpg" width="950px" height="600px">
+        </div>
+        <div class="right">
+            <div class="ri"><a onclick="plusSlides(1)" class="sl">&nbsp;》</a></div>
+        </div>
+    </div>
+</div>
+<div style="width: 320px;height: 610px;background: #f5f5f5;position: absolute;left: 1030px;top: 100px">
+    <h3>公司简介</h3>
+    <div style="position: absolute;top: 60px;width: 320px;height: 550px;background: grey">
+        <p style="font-weight: bolder;color: white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公司名称：<font color="#deb887">@艾特国际酒店</font>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公司理念：<font color="#deb887">顾客至上，锐意进取</font>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经营方式：<font color="#deb887">民营</font>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主营行业：<font color="#deb887">酒店行业、餐饮业</font>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;员工人数：<font color="#deb887">2000+</font>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经营区域：<font color="#deb887">东北三省</font>
+        </p>
+        <div style="position: absolute;top: 200px;left:10px;width: 300px;height: 300px;background: white">
+            突出酒店行业特点，突破烦琐业务的重重迷雾，抽丝剥茧，层层剖析，为读者展示会计真理。
+            读者对象酒店行业财务从业人员，高校、高职高专、中职中专、相关培训机构教师和学生突出酒店行业特点，突破烦琐业务的重重迷雾，抽丝剥茧，层层剖析，为读者展示会计真理。
+            读者对象 酒店行业财务从业人员，高校、高职高专、中职中专、相关培训机构教师和学生突出酒店行业特点，突破烦琐业务的重重迷雾，抽丝剥茧，层层剖析，为读者展示会计真理。
+            读者对象 酒店行业财务从业人员，高校、高职高专、中职中专、相关培训机构教师和学生
+        </div>
+
+
+    </div>
+
+</div>
+<script type="text/javascript">
+    var div2 = document.getElementsByClassName('div2');
+    var slideIndex = 1;
+    function show(n){
+        getsrc(slideIndex = n);
+    }
+    function getsrc(n){
+        if(n>div2.length){
+            slideIndex = 1;
+        }
+        if(n<1){
+            slideIndex = div2.length;
+        }
+        for(var i = 0 ; i < div2.length; i++){
+            div2[i].style.display="none";
+        }
+        div2[slideIndex - 1].style.display="block";
+
+    }
+    function plusSlides(n) {
+        getsrc(slideIndex += n);
+    }
+    var j = 1,timer = 0;
+
+    function on(){
+        timer = setInterval(function(){
+                if(j>div2.length){
+                    j=1;
+                }
+                for(var c = 0 ; c < div2.length ; c++){
+                    div2[c].style.display="none";
+                }
+                div2[j-1].style.display="block";
+                j++;
+            }
+            ,3000);
+    }
+    function down(){
+        if(timer!=0){
+            clearInterval(timer);
+        }
+    }
+</script>
+</body>
+</html>

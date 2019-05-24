@@ -1,0 +1,270 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        .footer{
+            height: 150px;
+            width: 1360px;
+            background: black;
+            margin: 0 auto;
+        }
+        #ax,#bx,#cx,#dx,#ex:hover{
+            cursor: pointer;
+        }
+        #result{
+            position:absolute;
+            top: 130px;left: 200px;
+            border-radius: 50%;
+            width: 240px;
+            height:240px;
+            border:1px solid #eee;
+        }
+        .input{
+            position: absolute;
+            top: 250px;
+            left:460px;
+            width:70px;
+        }
+        #result img{
+            border-radius: 50%;
+            width: 240px;
+            height:240px;
+        }
+    </style>
+</head>
+<body>
+<div style="height: 30px;width: 1360px;background: black;margin: 0 auto">
+    <a href="/view/jsp/web.jsp" style="color: #eeeeee;position: absolute;top: 5px;left: 1230px">返回首页</a>
+</div>
+<div style="height: 500px;width: 1360px;background: gray;margin: 0 auto">
+    <table style="position: absolute;top: 70px;left: 10px">
+        <tr>
+            <td><img src="${pageContext.request.contextPath}/resource/image/${jsp.file}" width="150px" height="150px" style="border:2px solid white"></td>
+        </tr>
+        <tr>
+            <td style="background: white" height="50px"><div style="text-align: center;font-weight: bolder;" id="ax" onclick="f()">我的信息</div></td>
+        </tr>
+        <tr>
+            <td style="background: white" height="50px"><div style="text-align: center;font-weight: bolder;" id="bx" onclick="f1()">修改头像</div></td>
+        </tr>
+        <tr>
+            <td style="background: white" height="50px"><div style="text-align: center;font-weight: bolder;" id="cx" onclick="f2()">修改信息</div></td>
+        </tr>
+        <tr>
+            <td style="background: white" height="50px"><div style="text-align: center;font-weight: bolder;" id="dx" onclick="f3()">酒店评论</div></td>
+        </tr>
+        <tr>
+            <td style="background: white" height="50px"><div style="text-align: center;font-weight: bolder;" id="ex" onclick="f4()">历史记录</div></td>
+        </tr>
+    </table>
+    <div style="width: 1000px;height: 500px;background: #4c4c4c;position: absolute;top: 30px;left: 190px">
+        <div id="ac">
+            <table width="700px"style="background: white;position: absolute;top: 40px;left: 150px">
+                <tr>
+                    <td style="text-align: center;background: white;font-size: 20px;font-weight: bolder;color: brown" height="80px">个人信息</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td style="background:wheat;text-align: center;font-weight: bolder;color: brown" height="40px">用户:</td>
+                    <td style="background: #ecc490;text-align: center;font-weight: bolder;color: brown" height="40px">${jsp.username}</td>
+                    <td width="100px"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="background:wheat;text-align: center;font-weight: bolder;color: brown" height="40px">密码:</td>
+                    <td style="background: #ecc490;text-align: center;font-weight: bolder;color: brown" height="40px">*******</td>
+                    <td width="50px"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="background:wheat;text-align: center;font-weight: bolder;color: brown" height="40px">性别:</td>
+                    <td style="background: #ecc490;text-align: center;font-weight: bolder;color: brown" height="40px">${jsp.sex}</td>
+                    <td width="50px"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="background:wheat;text-align: center;font-weight: bolder;color: brown" height="40px">年龄:</td>
+                    <td style="background: #ecc490;text-align: center;font-weight: bolder;color: brown" height="40px">${jsp.age}</td>
+                    <td width="50px"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="background:wheat;text-align: center;font-weight: bolder;color: brown" height="40px">联系:</td>
+                    <td style="background: #ecc490;text-align: center;font-weight: bolder;color: brown" height="40px">${jsp.phone}</td>
+                    <td width="50px"></td>
+                </tr>
+                <tr>
+                    <td style="background:white;"></td>
+                    <td style="background:wheat;text-align: center;font-weight: bolder;color: brown" height="40px">card:</td>
+                    <td style="background: #ecc490;text-align: center;font-weight: bolder;color: brown" height="40px">${jsp.card}</td>
+                    <td width="50px"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;background: white;font-size: 20px;font-weight: bolder;color: brown" height="80px"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="bc" style="display: none">
+            <div style="position: absolute;top: 80px;left: 600px;width: 300px;height: 100px;background: white;border: 2px wheat;border-radius: 40px">
+                <font style="font-weight: bolder;font-size: 17px;position: relative;top: 36px" color="black">提示:选中图片后，上传按钮即可使用。</font>
+            </div>
+            <form action="/a/updatefile" method="post" enctype="multipart/form-data">
+                <div id = "result"></div>
+                <input id="pic" class="input" id="file" type="file" name="file" accept = "image/*" onchange = "selectFile()"/>
+                <input disabled="disabled" type="submit" value="上传" style="position: absolute;top: 350px;left: 800px;font-size: 20px;font-weight: bolder;" id="submit" >
+            </form>
+        </div>
+        <div id="cc" style="display: none">
+            <form action="/a/upUser" method="post">
+                <table width="600px" style="position: absolute;top: 90px;left: 190px" border="1">
+                    <tr>
+                        <td style="text-align: center;font-size: 18px;color: white" width="300px;">密码</td>
+                        <td><input name="password" value="" style="width: 300px;height: 20px"></td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr>
+                        <td style="text-align: center;font-size: 18px;color: white;height: 20px" width="300px">性别</td>
+                        <td><input name="sex" value="" style="width: 300px;height: 20px"></td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr>
+                        <td style="text-align: center;font-size: 18px;color: white" width="300px">年龄</td>
+                        <td><input name="age" value="" style="width: 300px;height: 20px"></td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr>
+                        <td style="text-align: center;font-size: 18px;color: white" width="300px">联系</td>
+                        <td><input name="phone" value="" style="width: 300px;height: 20px"></td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" style="width: 610px;height: 30px"  value="更新"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div id="dc" style="display: none">
+            <form action="/a/uptalk" method="post">
+                <table border="1">
+                    <tr>
+                        <td width="200px"><textarea name="talk" value="" style="height: 400px;width: 200px"></textarea></td>
+                    </tr>
+                    <tr><td><input  type="submit" value="发表" style="font-size:18px;font-weight:bolder;width: 200px;height: 80px"></td></tr>
+                </table>
+            </form>
+            <div style="position: absolute;top:0px;left: 220px;background: white;width: 780px;height: 500px;overflow-x: hidden;overflow-y: scroll;">
+                <c:forEach var="talks" items="${talk}">
+                    <div style="background: #9c9c9c;margin: 15px 20px;height: 40px;border-top-left-radius: 20px;border-bottom-left-radius: 20px">
+                        <img src="${pageContext.request.contextPath}/resource/image/${talks.file}" width="40px" height="40px" style="border-radius: 20px"/>
+                        <div style="margin: -35px 0px 0px 50px;">${talks.text}</div>
+                        <a href="/a/showAnswer?id=${talks.id}"><div style="margin: -20px 0px 0px 500px;">查看</div></a>
+                        <div style="margin: -20px 0px 0px 550px;">${talks.data}</div>
+                    </div>
+                </c:forEach>
+
+            </div>
+        </div>
+        <div id="ec" style="display: none">
+            <div style="position: absolute;top:0px;left: 220px;background: white;width: 780px;height: 500px;overflow-x: hidden;overflow-y: scroll;">
+                <c:forEach var="order" items="${orders}">
+                    <div style="background: #9c9c9c;margin: 15px 20px;height: 40px;border-top-left-radius: 20px;border-bottom-left-radius: 20px">
+                        <img src="${pageContext.request.contextPath}/resource/image/${order.file}" width="40px" height="40px" style="border-radius: 20px"/>
+                        <div style="margin: -35px 0px 0px 70px;">用户：${order.username}</div>
+                        <div style="margin: -20px 0px 0px 350px;">房间：${order.rnumber}</div>
+                        <div style="margin: -20px 0px 0px 450px;">时间：${order.date}</div>
+                    </div>
+                </c:forEach>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <a href="#" style="float: left;margin: 30px 0px 0px 30px;color: white">友情链接：棚户区改造&nbsp;黑龙江宣传片拍摄&nbsp;桥梁设计</a>
+    <div style="color: white">
+        <font style="font-size:13px;float: left;margin: 100px 0px 0px 150px;">Copyright@淘乐乐购物车平台CNZZTD</font>
+        <font style="font-size: 13px;float: left;margin: 120px 0px 0px -220px">客服电话：18846013664&nbsp;&nbsp;&nbsp;&nbsp;版权所有</font>
+    </div>
+</div>
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+    var submit = document.getElementById("submit");
+    //var files = document.getElementById('pic').files;
+    var form = new FormData();//通过HTML表单创建FormData对象
+    var url = '127.0.0.1:8080/'
+    function selectFile() {
+        submit.disabled = false;
+        var files = document.getElementById('pic').files;
+        console.log(files[0]);
+        if (files.length == 0) {
+            return;
+        }
+        var file = files[0];
+        //把上传的图片显示出来
+        var reader = new FileReader();
+        // 将文件以Data URL形式进行读入页面
+        console.log(reader);
+        reader.readAsBinaryString(file);
+        reader.onload = function (f) {
+            var result = document.getElementById("result");
+            var src = "data:" + file.type + ";base64," + window.btoa(this.result);
+            result.innerHTML = '<img src ="' + src + '"/>';
+        }
+        console.log('file', file);
+        ///////////////////
+        form.append('file', file);
+        console.log(form.get('file'));
+    }
+    var ac =  document.getElementById("ac");
+    var bc =  document.getElementById("bc");
+    var cc =  document.getElementById("cc");
+    var dc =  document.getElementById("dc");
+    var ec =  document.getElementById("ec");
+    function f() {
+        ac.style.display="block";
+        bc.style.display="none";
+        cc.style.display="none";
+        dc.style.display="none";
+        ec.style.display="none";
+    }
+    function f1() {
+        ac.style.display="none";
+        bc.style.display="block";
+        cc.style.display="none";
+        dc.style.display="none";
+        ec.style.display="none";
+    }
+    function f2() {
+        ac.style.display="none";
+        bc.style.display="none";
+        cc.style.display="block";
+        dc.style.display="none";
+        ec.style.display="none";
+    }
+    function f3() {
+        ac.style.display="none";
+        bc.style.display="none";
+        cc.style.display="none";
+        dc.style.display="block";
+        ec.style.display="none";
+    }
+    function f4() {
+        ac.style.display="none";
+        bc.style.display="none";
+        cc.style.display="none";
+        dc.style.display="none";
+        ec.style.display="block";
+    }
+
+</script>
+</body>
+</html>

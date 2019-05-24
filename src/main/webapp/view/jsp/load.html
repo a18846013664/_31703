@@ -1,0 +1,92 @@
+<%--
+Created by IntelliJ IDEA.
+User: 17149
+Date: 2019/3/6
+Time: 21:34
+To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        a{
+            color: white;
+            text-decoration: white;
+        }
+        p:hover{
+            cursor: pointer;
+            color: aquamarine;
+        }
+        .body{
+            height: 440px;
+            width: 1330px;
+            background: url("../../uploaddir/31702.jpeg");
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+        }
+        .one{
+            height: 40px;
+            width: 1330px;
+            background: black;
+        }
+        .footer{
+            height: 150px;
+            width: 1330px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+<div class="one">
+    <div style="width: 250px;height: 26px;border-radius: 25px;background: white;position: absolute;top: 5px;left: 550px">
+        <center>
+            <font style="color: red;font-weight: bolder;font-size: 18px">@&nbsp;艾&nbsp;特&nbsp;国&nbsp;际&nbsp;酒&nbsp;店</font>
+        </center>
+    </div>
+    <p onclick="f()" id="pa" style="position: absolute;left: 1140px;top: 15px;color: white">
+        管理员入口
+    </p>
+    <p onclick="f1()" id="pb" style="position: absolute;left: 1240px;top: 15px;color: white">
+        用户登陆
+    </p>
+</div>
+<div class="body"></div>
+
+<div class="footer" id="manage" style="display: none">
+    <form action="/loginManage" method="post">
+        <table style="position: absolute;top: 550px;left: 400px">
+            <tr>
+                <td style="color: white">权限&nbsp;</td>
+                <td><input name="username" type="text"></td>
+                <td style="color: white">${errUserr}</td>
+                <td style="color: white">密码&nbsp;</td>
+                <td><input name="password" type="text"></td>
+                <td style="color: white">${errPasss}</td>
+                <td><input type="submit" value="登陆"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script TYPE="text/javascript">
+    var pa = document.getElementById("pa");
+    var pb = document.getElementById("pb");
+    var user = document.getElementById("user");
+    var manage = document.getElementById("manage");
+    function f() {
+        user.style.display="none";
+        manage.style.display="block";
+    }
+    function f1() {
+        user.style.display="block";
+        manage.style.display="none";
+    }
+</script>
+</body>
+</html>
